@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: crud-product
+
+server:
+  port: 8081
+
+aws.dynamodb:
+  url: http://localhost:8000

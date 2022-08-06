@@ -1,8 +1,6 @@
 package com.github.fabriciolfj.productservice.repository;
 
-import com.github.fabriciolfj.productservice.model.Category;
 import com.github.fabriciolfj.productservice.model.Product;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbAsyncTable;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedAsyncClient;

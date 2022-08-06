@@ -30,7 +30,9 @@ public class ProductService {
     public Mono<Category> findByCategory(final String id) {
         return Mono.from(productRepository.getProductCategory(id)
                         .items()
-                        .map(Product::getCategory));
+                        .map(Product::getCategory))
+                .doOnSuccess(c -> log.info("Category return: {}", c))
+                .doOnError(e -> log.error("Fail get category {}", e.getMessage()));
     }
 
     public Mono<Product> update(final Product product) {

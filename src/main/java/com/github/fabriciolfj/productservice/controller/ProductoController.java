@@ -1,5 +1,6 @@
 package com.github.fabriciolfj.productservice.controller;
 
+import com.github.fabriciolfj.productservice.model.Category;
 import com.github.fabriciolfj.productservice.model.Product;
 import com.github.fabriciolfj.productservice.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,13 @@ public class ProductoController {
     @GetMapping
     public Flux<Product> findAll() {
         return productService.list();
+    }
+
+    @GetMapping("/{id}/category")
+    public Mono<ResponseEntity<Category>> getCategory(@PathVariable("id") final String id) {
+        return productService.findByCategory(id)
+                .map(s -> ResponseEntity.accepted().body(s))
+                .onErrorReturn(ResponseEntity.internalServerError().build());
     }
 
     @GetMapping("/{id}")
